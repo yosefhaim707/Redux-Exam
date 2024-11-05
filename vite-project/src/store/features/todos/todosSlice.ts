@@ -22,10 +22,12 @@ const todoSlice = createSlice({
             const selectedTask: Task | undefined = state.tasks.find(task => task.id == action.payload);
 
             if (selectedTask) {
-
                 selectedTask.completed ? selectedTask.completed = false : selectedTask.completed = true;
             }
 
         }
     }
-})
+});
+
+export const { toggleCompleted } = todoSlice.actions;
+export default todoSlice.reducer;
