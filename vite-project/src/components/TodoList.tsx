@@ -8,6 +8,15 @@ const TodoList: FC = (): JSX.Element => {
     const [completedCounter, setCompletedCounter] = useState<number>(0);
     const tasks: Task[] = useSelector((state: RootState) => state.todos.tasks);
     const dispatch = useDispatch();
+    
+    const handleToggle = (id: number) => {
+        dispatch(toggleCompleted(id));
+        
+        setCompletedCounter(prev => prev + 1)
+    }
+
+
+
     return (
         <div>
             <h1>Todo List</h1>
@@ -20,6 +29,7 @@ const TodoList: FC = (): JSX.Element => {
                     
                 )}
             </ul>
+            <p>{completedCounter}</p>
         </div>
     )
 };
