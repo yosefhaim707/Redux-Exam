@@ -18,9 +18,13 @@ const todoSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-        toggleCompleted: (state, action: PayloadAction<number>): boolean => {
+        toggleCompleted: (state, action: PayloadAction<number>): void => {
             const selectedTask: Task | undefined = state.tasks.find(task => task.id == action.payload);
-            
+
+            if (selectedTask) {
+
+                selectedTask.completed ? selectedTask.completed = false : selectedTask.completed = true;
+            }
 
         }
     }
